@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter
+enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+    <metadata>
+        <id>c4b-environment.powershell</id>
+        <version>$version$</version>
+        <owners>Chocolatey Software</owners>
+        <title>Chocolatey for Business Environment Module</title>
+        <authors>jpruskin</authors>
+        <projectUrl>https://github.com/jpruskin/C4B-Environment</projectUrl>
+        <licenseUrl>https://github.com/jpruskin/C4B-Environment/blob/main/LICENSE.md</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <projectSourceUrl>https://github.com/jpruskin/C4B-Environment/</projectSourceUrl>
+        <packageSourceUrl>https://github.com/jpruskin/C4B-Environment/tree/main/chocolatey</packageSourceUrl>
+        <bugTrackerUrl>https://github.com/jpruskin/C4B-Environment/issues</bugTrackerUrl>
+        <tags>chocolatey business jenkins nexus chocolateycentralmanagement</tags>
+        <summary>A PowerShell module written to deploy and maintain a Chocolatey For Business environment.</summary>
+        <releaseNotes>https://github.com/JPRuskin/C4B-Environment/releases</releaseNotes>
+        <description><![CDATA[
+A PowerShell module containing functions written to deploy and maintain a [Chocolatey For Business](https://chocolatey.org/products/chocolatey-for-business) environment.
+        ]]></description>
+    </metadata>
+    <files>
+        <file src="*.ps1" target="tools" />
+        <file src="..\$version$\**" target="tools\C4B-Environment\$version$" />
+    </files>
+</package>

@@ -9,8 +9,9 @@ function Test-CertificateDomain {
     }
 
     # Check that we have a domain for it
-    if (-not ($CertificateDnsName = Get-ChocoEnvironmentProperty CertSubject) -and ($Certificate.Subject -match '^CN=\*')) {
-        $matcher = 'CN\s?=\s?(?<Subject>[^,\s]+)'
+    $matcher = '^CN\s?=\s?(?<Subject>[^,\s]+)'
+
+    if (-not ($CertificateDnsName = Get-ChocoEnvironmentProperty CertSubject) -and ($Certificate.Subject -match '^CN\s*=\s*\*')) {
         $null = $Certificate.Subject -match $matcher
         $CertificateDnsName = if ($Matches.Subject.StartsWith('*')) {
             # This is a wildcard cert, we need to prompt for the intended CertificateDnsName
@@ -21,8 +22,13 @@ function Test-CertificateDomain {
         } else {
             $Matches.Subject
         }
-        Set-ChocoEnvironmentProperty CertSubject $CertificateDnsName
+    } elseif ($Certificate.Subject -match $matcher) {
+        $CertificateDnsName = $Matches.Subject
+    } else {
+        Write-Error "The certificate '$($Certificate.Subject)' ($Thumbprint) could not be identified."
     }
+
+    Set-ChocoEnvironmentProperty CertSubject $CertificateDnsName
 
     $true
 }

@@ -10,7 +10,7 @@ function Invoke-Choco {
         [int[]]$ValidExitCodes = @(0)
     )
 
-    if ($Command -eq 'Install' -and $Arguments -notmatch '\b-(y|-confirm)\b') {
+    if ($Command -eq 'Install' -or $Command -eq 'Upgrade' -and $Arguments -notmatch '\b-(y|-confirm)\b') {
         $Arguments += '--confirm'
     }
 

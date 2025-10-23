@@ -12,8 +12,7 @@ function Get-Certificate {
 
     $filter = if ($Thumbprint) {
         { $_.Thumbprint -eq $Thumbprint }
-    }
-    else {
+    } else {
         { $_.Subject -like "CN=$Subject" }
     }
 
@@ -23,8 +22,7 @@ function Get-Certificate {
 
     if ($null -eq $cert) {
         throw "Certificate either not found, or other issue arose."
-    }
-    else {
+    } else {
         Write-Host "Certification validation passed" -ForegroundColor Green
         $cert
     }

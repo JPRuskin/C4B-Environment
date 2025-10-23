@@ -1,12 +1,15 @@
-function Add-DatabaseUserAndRoles {
+function Add-CcmDatabaseUserAndRoles {
+    [CmdletBinding()]
+    [Alias('Add-DatabaseUserAndRoles')]
     param(
-        [parameter(Mandatory = $true)][string] $Username,
-        [parameter(Mandatory = $true)][string] $DatabaseName,
-        [parameter(Mandatory = $false)][string] $DatabaseServer = 'localhost\SQLEXPRESS',
-        [parameter(Mandatory = $false)] $DatabaseRoles = @('db_datareader'),
-        [parameter(Mandatory = $false)][string] $DatabaseServerPermissionsOptions = 'Trusted_Connection=true;',
-        [parameter(Mandatory = $false)][switch] $CreateSqlUser,
-        [parameter(Mandatory = $false)][string] $SqlUserPw
+        [parameter(Mandatory)][string] $Username,
+        [parameter(Mandatory)][string] $DatabaseName,
+        [parameter()][string] $DatabaseServer = 'localhost\SQLEXPRESS',
+        [parameter()] $DatabaseRoles = @('db_datareader'),
+        [parameter()][string] $DatabaseServerPermissionsOptions = 'Trusted_Connection=true;',
+        [parameter()][switch] $CreateSqlUser,
+        [Alias("SqlUserPw")]
+        [parameter()][string] $SqlUserPassword
     )
 
     $LoginOptions = "FROM WINDOWS WITH DEFAULT_DATABASE=[$DatabaseName]"

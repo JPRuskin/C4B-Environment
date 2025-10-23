@@ -1,0 +1,91 @@
+{
+    "*": {
+        "chocolatey": [
+            { "name": "chocolatey" },
+            { "name": "chocolatey.extension" },
+            { "name": "dotnetfx" }
+        ]
+    },
+    "jenkins": {
+        "chocolatey": [
+            { "name": "jenkins" },
+            { "name": "chocolatey-licensed-jenkins-jobs" },
+            { "name": "chocolatey-licensed-jenkins-scripts" },
+            { "name": "temurin21jre" },
+            { "name": "nexushell", "version": "1.2.0" }
+        ],
+        "jenkinsplugins": [
+            { "name": "apache-httpcomponents-client-4-api", "version": "4.5.14-269.vfa_2321039a_83" },
+            { "name": "asm-api", "version": "9.8-135.vb_2239d08ee90" },
+            { "name": "bouncycastle-api", "version": "2.30.1.80-256.vf98926042a_9b_" },
+            { "name": "branch-api", "version": "2.1217.v43d8b_b_d8b_2c7" },
+            { "name": "caffeine-api", "version": "3.2.0-166.v72a_6d74b_870f" },
+            { "name": "cloudbees-folder", "version": "6.1012.v79a_86a_1ea_c1f" },
+            { "name": "display-url-api", "version": "2.209.v582ed814ff2f" },
+            { "name": "durable-task", "version": "587.v84b_877235b_45" },
+            { "name": "instance-identity", "version": "201.vd2a_b_5a_468a_a_6" },
+            { "name": "ionicons-api", "version": "82.v0597178874e1" },
+            { "name": "jakarta-activation-api", "version": "2.1.3-2" },
+            { "name": "jakarta-mail-api", "version": "2.1.3-2" },
+            { "name": "javax-activation-api", "version": "1.2.0-8" },
+            { "name": "javax-mail-api", "version": "1.6.2-11" },
+            { "name": "mailer", "version": "489.vd4b_25144138f" },
+            { "name": "pipeline-groovy-lib", "version": "752.vdddedf804e72" },
+            { "name": "scm-api", "version": "704.v3ce5c542825a_" },
+            { "name": "script-security", "version": "1373.vb_b_4a_a_c26fa_00" },
+            { "name": "structs", "version": "343.vdcf37b_a_c81d5" },
+            { "name": "variant", "version": "70.va_d9f17f859e0" },
+            { "name": "workflow-api", "version": "1371.ve334280b_d611" },
+            { "name": "workflow-basic-steps", "version": "1079.vce64b_a_929c5a_" },
+            { "name": "workflow-cps", "version": "4046.v90b_1b_9edec67" },
+            { "name": "workflow-durable-task-step", "version": "1405.v1fcd4a_d00096" },
+            { "name": "workflow-job", "version": "1520.v56d65e3b_4566" },
+            { "name": "workflow-multibranch", "version": "806.vb_b_688f609ee9" },
+            { "name": "workflow-scm-step", "version": "437.v05a_f66b_e5ef8" },
+            { "name": "workflow-step-api", "version": "700.v6e45cb_a_5a_a_21" },
+            { "name": "workflow-support", "version": "968.v8f17397e87b_8" }
+        ]
+    },
+    "nexus": {
+        "chocolatey": [
+            { "name": "nexus-repository" },
+            { "name": "nexushell", "version": "1.2.0" }
+        ]
+    },
+    "chocolatey-management-*": {
+        "chocolatey": [
+            { "name": "dotnet-8.0-aspnetruntime", "version": "8.0.16" },
+            { "name": "dotnet-8.0-runtime", "version": "8.0.16" },
+            { "name": "chocolatey-compatibility.extension" },
+            { "name": "chocolatey-core.extension" },
+            { "name": "KB2919355", "skipinternalize": true },
+            { "name": "KB2919442", "skipinternalize": true },
+            { "name": "KB2999226", "skipinternalize": true },
+            { "name": "KB3033929", "skipinternalize": true },
+            { "name": "vcredist140" }
+        ]
+    },
+    "chocolatey-management-database": {
+        "chocolatey": [
+            { "name": "chocolatey-management-database", "skipinternalize": true },
+            { "name": "sql-server-express" }
+        ]
+    },
+    "chocolatey-management-service": {
+        "chocolatey": [
+            { "name": "chocolatey-management-service", "skipinternalize": true }
+        ]
+    },
+    "chocolatey-management-web": {
+        "chocolatey": [
+            { "name": "chocolatey-management-web", "skipinternalize": true },
+            { "name": "dotnet-aspnetcoremodule-v2", "version": "18.0.25074" },
+            { "name": "KB3035131", "skipinternalize": true }
+        ]
+    },
+    "database": {
+        "chocolatey": [
+            { "name": "sql-server-express" }
+        ]
+    }
+}

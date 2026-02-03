@@ -1,0 +1,36 @@
+name: Build Module
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+    - 'source/**'
+    - 'data/**'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build Module
+        shell: pwsh
+        run: .\Build.ps1
+
+      - name: Test Module
+        shell: pwsh
+        run: .\Test.ps1
+
+      - name: Pack and Push Module
+        shell: pwsh
+        run: |
+          $ChocolateyPackage = .\Pack.ps1
+          try {
+            dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkc.github.com/${{ github.repository_owner }}/index.json"
+            dotnet nuget push $ChocolateyPackage.FullName --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+          } finally {
+            dotnet nuget remove source github
+          }

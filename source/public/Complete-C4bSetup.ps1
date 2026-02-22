@@ -33,13 +33,15 @@ function Complete-C4bSetup {
         } while ($Stopwatch.Elapsed.TotalSeconds -lt 10)
 
         if (-not ($keyInfo)) {
-            Write-Host "`nOpening CCM, Nexus & Jenkins sites in your browser." -ForegroundColor Green
+            Write-Host "`nOpening administration sites in your browser." -ForegroundColor Green
             Start-Process msedge.exe @(
                 'file:///C:/Users/Public/Desktop/README.html',
                 (Get-ChocoEnvironmentProperty CCMWebPortal),
+                (Get-ChocoEnvironmentProperty ProGetUri),
                 (Get-ChocoEnvironmentProperty NexusUri),
+                (Get-ChocoEnvironmentProperty PowerShellUniversalUri),
                 (Get-ChocoEnvironmentProperty JenkinsUri)
-            )
+            ).Where{ $_ }
         }
     }
 }

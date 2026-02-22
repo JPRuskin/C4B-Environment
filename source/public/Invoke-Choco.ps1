@@ -18,6 +18,10 @@ function Invoke-Choco {
         $Arguments += '--limit-output'
     }
 
+    if ($ErrorActionPreference -eq 'Stop') {
+        $Arguments += '--fail-on-error-output'
+    }
+
     $chocoPath = if ($CommandPath = Get-Command choco.exe -ErrorAction SilentlyContinue) {
         $CommandPath.Source
     } elseif ($env:ChocolateyInstall) {
@@ -29,11 +33,13 @@ function Invoke-Choco {
         "choco.exe"
     }
 
-    & $chocoPath $Command $Arguments | Tee-Object -Variable Result | Where-Object {$_} | ForEach-Object {
-        Write-Information -MessageData $_ -Tags Choco
-    }
-
-    if ($LASTEXITCODE -notin $ValidExitCodes) {
-        Write-Error -Message "$($Result[-5..-1] -join "`n")" -TargetObject "choco $Command $Arguments"
+    try {
+        & $chocoPath $Command $Arguments | Tee-Object -Variable Result | Where-Object { $_ } | ForEach-Object {
+            Write-Information -MessageData $_ -Tags Choco
+        }
+    } finally {
+        if ($LASTEXITCODE -notin $ValidExitCodes) {
+            Write-Error -Message "$(([string[]]$Result)[-5..-1] -join "`n")`nFor more information, see: $(Resolve-Path $env:ChocolateyInstall\logs\chocolatey.log)" -TargetObject "choco $Command $Arguments"
+        }
     }
 }

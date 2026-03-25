@@ -153,36 +153,13 @@ function CopyToClipboard(id)
   <li>Login with the credentials named <b>Chocolatey Central Management</b> from the <a href="#accounts">table below</a><br><i>(if javascript is enabled, you can click the password to copy it to your clipboard)</i></li>
   <li><a href="#connect">Install Chocolatey Agent on another computer</a></li>
   <li><a href="https://docs.chocolatey.org/en-us/central-management/usage/website/deployments#creating-a-deployment">Create a new deployment</a>, or import <a href="https://ch0.co/deployment-templates">example deployments</a>.</li>
-  <li><a href="https://{{ jenkins_fqdn }}:{{ jenkins_port }}/job/Internalize%20packages%20from%20the%20Community%20Repository/build?delay=0sec">Internalize some new packages</a> with Jenkins</li>
+  {{ getting_started_list }}
 </ul>
 <h2 id="accounts">Accounts and Secrets</h2>
 <table>
     <colgroup><col/><col/><col/><col/><col/><col/></colgroup>
     <tr><th/><th>Name</th><th>Url</th><th>Username</th><th>Password</th></tr>
-    <tr>
-        <td><img src="https://{{ ccm_fqdn }}:{{ ccm_port }}/favicon.ico" class="logo"></td>
-        <td>Chocolatey Central Management</td>
-        <td><a href="https://{{ ccm_fqdn }}:{{ ccm_port }}">{{ ccm_fqdn }}:{{ ccm_port }}</a></td>
-        <td>ccmadmin</td>
-        <td><a href="#" class="strip-decoration" onclick="CopyToClipboard('ccmpw');return false;"><div id="ccmpw" class="pw blurry-text">{{ ccm_password | e }}</div></a></td>
-    </tr>
-    <tr>
-        <td rowspan="2"><img src="https://{{ nexus_fqdn }}:{{ nexus_port }}/favicon.ico" class="logo"></td><td rowspan="2">Nexus</td>
-        <td rowspan="2"><a href="https://{{ nexus_fqdn }}:{{ nexus_port }}">{{ nexus_fqdn }}:{{ nexus_port }}</a></td>
-        <td>admin</td>
-        <td><a href="#" class="strip-decoration" onclick="CopyToClipboard('nexuspw');return false;"><div id="nexuspw" class="pw blurry-text">{{ nexus_password | e }}</div></a></td>
-    </tr>
-    <tr>
-        <td>{{ nexus_client_username }}</td>
-        <td><a href="#" class="strip-decoration" onclick="CopyToClipboard('nexusclientpw');return false;"><div id="nexusclientpw" class="pw blurry-text">{{ nexus_client_password | e }}</div></a></td>
-    </tr>
-    <tr>
-        <td><img src="https://{{ jenkins_fqdn }}:{{ jenkins_port }}/favicon.ico" class="logo"></td>
-        <td>Jenkins</td>
-        <td><a href="https://{{ jenkins_fqdn }}:{{ jenkins_port }}">{{ jenkins_fqdn }}:{{ jenkins_port }}</a></td>
-        <td>admin</td>
-        <td><a href="#" class="strip-decoration" onclick="CopyToClipboard('jenkinspw');return false;"><div id="jenkinspw" class="pw blurry-text">{{ jenkins_password | e }}</div></a></td>
-    </tr>
+    {{ table_elements }}
 </table>
 <br><br>
 <table>

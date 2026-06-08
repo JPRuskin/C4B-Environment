@@ -5,9 +5,10 @@ function Complete-C4bSetup {
     # Setup Agent on this machine
     if (-not (Get-Service chocolatey-agent -ErrorAction SilentlyContinue)) {
         Invoke-Choco install chocolatey-agent --confirm
-        Invoke-Choco feature enable --name='useChocolateyCentralManagement'
-        Invoke-Choco feature enable --name='useChocolateyCentralManagementDeployments'
     }
+
+    Invoke-Choco feature enable --name='useChocolateyCentralManagement'
+    Invoke-Choco feature enable --name='useChocolateyCentralManagementDeployments'
 
     # Write readme to desktop and hand over to user
     Write-Host 'Writing README to Desktop - this file contains login information for all C4B services.'

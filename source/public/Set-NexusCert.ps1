@@ -21,7 +21,7 @@ function Set-NexusCert {
         # Temporarily export the certificate as a PFX
         Get-ChildItem Cert:\LocalMachine\TrustedPeople\ | Where-Object { $_.Thumbprint -eq $Thumbprint } | Sort-Object | Select-Object -First 1 | Export-PfxCertificate -FilePath $TempCertPath -Password $KeystoreCredential.SecurePassword
         # TODO: Is this the right place for this? # Get-ChildItem -Path $TempCertPath | Import-PfxCertificate -CertStoreLocation Cert:\LocalMachine\My -Exportable -Password $KeystoreCredential.SecurePassword
-        
+
         if (Test-Path $KeyStorePath) {
             Remove-Item $KeyStorePath -Force
         }

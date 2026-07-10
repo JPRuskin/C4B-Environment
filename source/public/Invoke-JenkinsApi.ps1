@@ -24,6 +24,10 @@ function Invoke-JenkinsApi {
         [System.Management.Automation.CredentialAttribute()]
         $Credential,
 
+        # Any body to pass
+        [hashtable]$Body,
+
+        # If provided, fetches a Jenkins Crumb from the server before kicking off the request
         [switch]$RequiresCrumb
     )
     $RequestParams = @{}
@@ -54,8 +58,8 @@ function Invoke-JenkinsApi {
     $RequestParams['Uri'] = '{0}/{1}' -f $Uri.TrimEnd('/'), $Slug.TrimStart('/')
     $RequestParams['Method'] = $Method
 
-    if ($Parameters) {
-        $RequestParams['Body'] = $Parameters
+    if ($Body) {
+        $RequestParams['Body'] = $Body
     }
 
     Invoke-RestMethod @RequestParams

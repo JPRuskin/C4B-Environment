@@ -22,13 +22,18 @@ function Test-CertificateDomain {
         } else {
             $Matches.Subject
         }
-    } elseif ($Certificate.Subject -match $matcher) {
+    } elseif ($Certificate.Subject -match $matcher -and -not $CertificateDnsName) {
         $CertificateDnsName = $Matches.Subject
+    } elseif ($CertificateDnsName) {
+        # We have a pre-existing domain to use
     } else {
         Write-Error "The certificate '$($Certificate.Subject)' ($Thumbprint) could not be identified."
+        return $false
     }
 
-    Set-ChocoEnvironmentProperty CertSubject $CertificateDnsName
+    if ($CertificateDnsName) {
+        Set-ChocoEnvironmentProperty CertSubject $CertificateDnsName
+    }
 
     $true
 }
